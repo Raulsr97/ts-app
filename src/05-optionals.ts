@@ -7,14 +7,21 @@ export const createProduct = (
   return {
     id,
     // Asignando un valor por defecto al atributo opcional
-    stock: stock || 10,
-    isNew: isNew || true
+    // El problema del operador || es que va a tomar los valores abajo mendionados cómo falsos, y cuando se usan esos valores no nos da el resultado esperado.
+    // 0 === false
+    // '' === false
+    // false == false
+
+    // stock: stock || 10,
+    // isNew: isNew || true
+
+    // Para prevenir este error se usa nullish-coalescing.
+
+    stock: stock ?? 10,
+    isNew: isNew ?? true
   }
 }
 
-// 0 === false
-// '' === false
-// false == false
 
 
 const p1 = createProduct('r1', 20 , false)
