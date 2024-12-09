@@ -4,3 +4,7 @@ ts-node:
 
 Tuplas:
  - Array fuertemente tipado
+
+ Utility types:
+ - Heramientas ya hechas que te permiten manipular y tranformar tipos de manera más facil y rápida, sin tener que escribir mucha lógica.
+ - Son como funciones pero como para trabajar con tipos.
