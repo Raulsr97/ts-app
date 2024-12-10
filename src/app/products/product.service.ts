@@ -1,5 +1,5 @@
 import { Product } from "./product.model";
-import { createProductDto } from "./product.dto";
+import { createProductDto, findDto, updateDto } from "./product.dto";
 import { faker } from "@faker-js/faker/.";
 
 export const products: Product[] = []
@@ -20,7 +20,23 @@ export const addProduct = (data: createProductDto): Product => {
   products.push(newProduct)
   return newProduct
 }
-
-export const updateProduct = (id: string, changes: Product) => {
-
+                              // Obteniendo el tipado que tiene product en el atributo id
+export const updateProduct = (id: Product['id'], changes: updateDto): Product => {
+  const index = products.findIndex(item => item.id === id)
+  const prevData = products[index]
+  products[index] = {
+    ...prevData,
+    ...changes
+  }
+  return products[index]
 }
+
+
+export const findProducts = (dto: findDto): Product[] => {
+  // No me permite hacer cambios porque configuramos el dto a solo lectura
+  // dto.color = 'blue'
+  // dto.tags.map()
+  // code
+  return products
+}
+
